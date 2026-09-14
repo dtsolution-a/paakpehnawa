@@ -1,0 +1,10 @@
+{
+  "description": "Enables users to create meticulously crafted designs with precision tools, enhancing creativity and delivering professional-quality results efficiently.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

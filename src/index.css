@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lavishly+Yours&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Montserrat', sans-serif;
+  --font-sans: 'Poppins', sans-serif;
+  --font-signature: 'Lavishly Yours', cursive;
+
+  --color-ivory: #F7F3EC;
+  --color-charcoal: #171717;
+  --color-gold: #B89A5A;
+  --color-brown: #4E220F;
+  --color-sand: #F7F1DE;
+  --color-muted: #EDE8DF;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F7F3EC;
+  color: #171717;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #F7F3EC;
+}
+::-webkit-scrollbar-thumb {
+  background: #D8CBB8;
+  border-radius: 3px;
+}
+
+/* Ornamental section divider */
+.ornamental {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.ornamental::before,
+.ornamental::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(184, 154, 90, 0.35);
+}
+
+/* Fade-up animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* Subtle jaali background pattern for select sections */
+.jaali-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 2 L38 20 L20 38 L2 20 Z' fill='none' stroke='%23B89A5A' stroke-width='0.4' opacity='0.2'/%3E%3Ccircle cx='20' cy='20' r='3' fill='none' stroke='%23B89A5A' stroke-width='0.4' opacity='0.15'/%3E%3C/svg%3E");
+}
