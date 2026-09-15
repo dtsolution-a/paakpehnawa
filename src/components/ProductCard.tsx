@@ -14,6 +14,13 @@ function discount(price: number, mrp: number) {
   return Math.round(((mrp - price) / mrp) * 100);
 }
 
+const SCARCITY = ['Only 3 Left', 'Selling Fast', 'Limited Edition'];
+
+function scarcityIndex(id: string) {
+  let n = 0;
+  for (let i = 0; i < id.length; i++) n += id.charCodeAt(i);
+  return n % 3;
+}
 export default function ProductCard({ product, navigate, wishlist, onWishlist, onAddToCart }: Props) {
   const [hovered, setHovered] = useState(false);
   const wished = wishlist.has(product.id);
@@ -45,7 +52,7 @@ export default function ProductCard({ product, navigate, wishlist, onWishlist, o
             </span>
           )}
           <span className="text-[9px] tracking-wide font-sans px-2.5 py-1 bg-gold/80 backdrop-blur-md text-charcoal font-semibold rounded-sm block">
-            {SCARCITY[parseInt(product.id) % 3]}
+            {SCARCITY[scarcityIndex(product.id)]}
           </span>
         </div>
 
