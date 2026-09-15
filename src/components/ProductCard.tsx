@@ -38,9 +38,14 @@ export default function ProductCard({ product, navigate, wishlist, onWishlist, o
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ${hovered ? 'opacity-100' : 'opacity-0'}`}
         />
 
-        <div className="absolute top-3 left-3 z-10">
-          <span className="text-[10px] tracking-wide font-sans px-2.5 py-1 bg-brown/40 backdrop-blur-md text-ivory/90 rounded-sm">
-            {disc > 0 ? `${disc}% Off` : product.badge}
+        <div className="absolute top-3 left-3 z-10 flex flex-col gap-1.5">
+          {disc > 0 && (
+            <span className="text-[10px] tracking-wide font-sans px-2.5 py-1 bg-brown/40 backdrop-blur-md text-ivory/90 rounded-sm block">
+              SAVE ₹{(product.mrp - product.price).toLocaleString('en-IN')}
+            </span>
+          )}
+          <span className="text-[9px] tracking-wide font-sans px-2.5 py-1 bg-gold/80 backdrop-blur-md text-charcoal font-semibold rounded-sm block">
+            {SCARCITY[parseInt(product.id) % 3]}
           </span>
         </div>
 

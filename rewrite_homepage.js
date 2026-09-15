@@ -1,4 +1,9 @@
-import { useState, useEffect } from "react"
+import fs from 'fs';
+
+// ─────────────────────────────────────────────────────
+// 1. HOMEPAGE REWRITE
+// ─────────────────────────────────────────────────────
+const homepage = `import { useState, useEffect } from "react"
 import logo from "@/imports/image.png"
 import { PRODUCTS, CATEGORIES } from "@/data/products"
 import ProductCard from "@/components/ProductCard"
@@ -77,7 +82,7 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
             key={src}
             src={src}
             alt="Premium Indian menswear fashion campaign"
-            className={`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 ${i === heroIndex ? "opacity-100" : "opacity-0"}`}
+            className={\`absolute inset-0 w-full h-full object-cover object-center transition-opacity duration-1000 \${i === heroIndex ? "opacity-100" : "opacity-0"}\`}
           />
         ))}
 
@@ -110,7 +115,7 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
         {/* Slide indicators */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
           {HERO_IMAGES.map((_, i) => (
-            <button key={i} onClick={() => setHeroIndex(i)} className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === heroIndex ? "bg-gold scale-125" : "bg-ivory/40"}`} />
+            <button key={i} onClick={() => setHeroIndex(i)} className={\`w-1.5 h-1.5 rounded-full transition-all duration-300 \${i === heroIndex ? "bg-gold scale-125" : "bg-ivory/40"}\`} />
           ))}
         </div>
       </section>
@@ -137,7 +142,7 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
                 >
                   <div className="absolute inset-0 overflow-hidden" style={{ margin: "-48px 0" }}>
                     <iframe
-                      src={`https://www.instagram.com/p/${id}/embed/?autoplay=1&muted=1&hidecaption=1`}
+                      src={\`https://www.instagram.com/p/\${id}/embed/?autoplay=1&muted=1&hidecaption=1\`}
                       style={{ width: "240px", height: "516px", border: "none", pointerEvents: "none" }}
                       scrolling="no"
                       allowTransparency={true}
@@ -233,7 +238,7 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
               if (i === 0) classes = "col-span-2 row-span-2"
               else if (i === 5) classes = "col-span-2 row-span-1"
               return (
-                <button key={cat.name} onClick={() => navigate("plp")} className={`group relative overflow-hidden bg-brown text-left ${classes}`}>
+                <button key={cat.name} onClick={() => navigate("plp")} className={\`group relative overflow-hidden bg-brown text-left \${classes}\`}>
                   <img src={cat.img} alt={cat.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-85 group-hover:opacity-100" />
                   <div className="absolute inset-0 bg-gradient-to-t from-brown/90 via-brown/20 to-transparent opacity-70 group-hover:opacity-90 transition-opacity" />
                   <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
@@ -429,3 +434,7 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
     </main>
   )
 }
+`
+
+fs.writeFileSync('src/pages/HomePage.tsx', homepage)
+console.log('✅ HomePage.tsx rewritten')

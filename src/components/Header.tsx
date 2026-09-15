@@ -13,6 +13,16 @@ const COLLECTION_ITEMS = ['New Arrivals', 'Signature Collection', 'Wedding', 'Fe
 
 export default function Header({ navigate, cartCount, wishlist }: Props) {
   const [scrolled, setScrolled] = useState(false);
+  const [annIdx, setAnnIdx] = useState(0);
+  const ANN_MESSAGES = [
+    "FREE SHIPPING ON ORDERS ABOVE ₹1,999",
+    "NEW WEDDING COLLECTION IS LIVE — SHOP NOW",
+    "HANDCRAFTED IN INDIA · DELIVERED TO YOUR DOOR",
+  ];
+  useEffect(() => {
+    const t = setInterval(() => setAnnIdx(p => (p + 1) % 3), 4000);
+    return () => clearInterval(t);
+  }, []);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -26,7 +36,7 @@ export default function Header({ navigate, cartCount, wishlist }: Props) {
   return (
     <>
       <div className="bg-brown text-ivory text-center py-2 text-[10px] tracking-[0.2em] font-sans">
-        THE NEW STANDARD OF INDIAN MENSWEAR
+        {ANN_MESSAGES[annIdx]}
       </div>
 
       <header
