@@ -181,10 +181,10 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
               <button className="text-[11px] tracking-[0.2em] font-sans font-semibold text-charcoal border-b border-charcoal pb-1 hover:text-gold hover:border-gold transition-colors rounded-sm">
                 DISCOVER OUR STORY
               </button>
+              </div>
             </div>
-          </div>
         </div>
-        </Reveal>
+          </Reveal>
       </section>
 
       {/* ── SHOP BY CATEGORY (BENTO) ── */}
@@ -253,8 +253,8 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
       <section className="relative w-full overflow-hidden bg-brown">
         <img src="/images/hero-2.png" alt="Editorial Campaign" className="w-full h-auto block opacity-80" />
         <div className="absolute inset-0 bg-gradient-to-r from-brown/90 via-brown/40 to-transparent" />
-        <Reveal>
         <div className="absolute inset-0 flex flex-col justify-center px-4 sm:px-6 py-4">
+          <Reveal>
           <div className="max-w-[1400px] w-full mx-auto">
             <div className="max-w-xl">
               <h2 className="font-display font-black text-ivory mb-2 sm:mb-6" style={{ fontSize: "clamp(1.2rem, 4vw, 5rem)", letterSpacing: "-0.02em" }}>
@@ -268,8 +268,8 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
               </button>
             </div>
           </div>
-        </div>
         </Reveal>
+        </div>
       </section>
 
       {/* ── BEST SELLERS (IVORY) ── */}
