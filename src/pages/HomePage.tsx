@@ -114,6 +114,44 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
         </div>
       </section>
 
+
+      {/* ── EXCLUSIVE OFFERS ── */}
+      <section className="py-12 md:py-20 bg-ivory border-b border-sand">
+        <Reveal>
+        <div className="max-w-[1400px] mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="font-sans text-[15px] tracking-[0.25em] text-charcoal uppercase">
+              EXCLUSIVE OFFERS
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              { title: "GET 15% OFF", desc: "On your first premium menswear purchase.", code: "WELCOME15" },
+              { title: "FREE SHIPPING", desc: "On all prepaid orders above ₹1,999 across India.", code: "AUTO-APPLIED" },
+              { title: "FESTIVE COMBO", desc: "Buy any Sherwani and get a free matching Mojari.", code: "FESTIVEGIFT" }
+            ].map((offer, idx) => (
+              <div key={idx} className="border border-gold/30 bg-sand/30 p-6 flex flex-col items-center text-center relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-16 h-16 bg-gold/10 rounded-bl-full -z-10 group-hover:scale-150 transition-transform duration-500" />
+                <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center mb-4">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B89A5A" strokeWidth="1.5">
+                    <path d="M21.5 12C21.5 17.2467 17.2467 21.5 12 21.5C6.75329 21.5 2.5 17.2467 2.5 12C2.5 6.75329 6.75329 2.5 12 2.5C17.2467 2.5 21.5 6.75329 21.5 12Z" />
+                    <path d="M15.5 9.5L8.5 15.5" />
+                    <path d="M9.5 9.5C9.5 9.77614 9.27614 10 9 10C8.72386 10 8.5 9.77614 8.5 9.5C8.5 9.22386 8.72386 9 9 9C9.27614 9 9.5 9.22386 9.5 9.5Z" />
+                    <path d="M15.5 15.5C15.5 15.7761 15.2761 16 15 16C14.7239 16 14.5 15.7761 14.5 15.5C14.5 15.2239 14.7239 15 15 15C15.2761 15 15.5 15.2239 15.5 15.5Z" />
+                  </svg>
+                </div>
+                <h3 className="font-display font-bold text-charcoal text-[18px] mb-2">{offer.title}</h3>
+                <p className="text-charcoal/70 text-[12px] font-sans mb-5 flex-1">{offer.desc}</p>
+                <div className="w-full border border-dashed border-charcoal/30 bg-ivory py-2.5">
+                  <span className="text-[11px] tracking-widest font-sans font-bold text-charcoal">CODE: {offer.code}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        </Reveal>
+      </section>
+
       {/* ── SOCIAL REELS SLIDER ── */}
       <section className="py-16 md:py-24 bg-brown overflow-hidden">
         <Reveal>

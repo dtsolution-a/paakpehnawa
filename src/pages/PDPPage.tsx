@@ -35,6 +35,22 @@ export default function PDPPage({ navigate, productId, wishlist, onWishlist, onA
   const [openAccordion, setOpenAccordion] = useState<string>('desc');
   const [added, setAdded] = useState(false);
   const [sizeError, setSizeError] = useState(false);
+  const [pincode, setPincode] = useState('');
+  const [deliveryInfo, setDeliveryInfo] = useState<{city: string, days: number} | null>(null);
+  const [pincodeError, setPincodeError] = useState(false);
+
+  const checkPincode = () => {
+    if (pincode.length !== 6 || isNaN(Number(pincode))) {
+      setPincodeError(true);
+      setDeliveryInfo(null);
+      return;
+    }
+    setPincodeError(false);
+    const cities = ['Mumbai', 'Delhi', 'Bengaluru', 'Hyderabad', 'Ahmedabad', 'Chennai', 'Kolkata', 'Surat', 'Pune', 'Jaipur'];
+    const city = cities[parseInt(pincode) % cities.length];
+    const days = (parseInt(pincode) % 4) + 2; // 2 to 5 days
+    setDeliveryInfo({ city, days });
+  };
 
   // Combine real images with extras to fulfill "Front, Back, Side, Detail..."
   const allImages = [product.img, product.imgHover, ...GALLERY_EXTRAS].map(img => img.replace('w=600&h=800', 'w=1000&h=1300'));
@@ -219,6 +235,47 @@ export default function PDPPage({ navigate, productId, wishlist, onWishlist, onA
                   <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
                 </svg>
               </button>
+            </div>
+
+            
+            {/* ── Pincode Validator ── */}
+            <div className="mb-10">
+              <div className="flex items-center justify-between mb-4">
+                <p className="text-[10px] tracking-[0.2em] font-sans font-semibold text-charcoal">CHECK DELIVERY & SERVICES</p>
+              </div>
+              <div className="flex">
+                <input 
+                  type="text" 
+                  value={pincode}
+                  onChange={(e) => setPincode(e.target.value)}
+                  placeholder="Enter Pincode" 
+                  className="flex-1 h-14 border border-charcoal/20 px-4 text-[13px] font-sans focus:outline-none focus:border-charcoal bg-transparent"
+                  maxLength={6}
+                />
+                <button 
+                  onClick={checkPincode}
+                  className="h-14 px-8 bg-charcoal text-ivory text-[10px] tracking-widest font-sans font-semibold hover:bg-gold hover:text-charcoal transition-colors"
+                >
+                  CHECK
+                </button>
+              </div>
+              {pincodeError && <p className="text-[11px] text-maroon font-sans mt-2">Please enter a valid 6-digit pincode.</p>}
+              {deliveryInfo && (
+                <div className="mt-4 p-4 border border-gold/30 bg-gold/5 flex items-start gap-3">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B89A5A" strokeWidth="1.5" className="mt-0.5 shrink-0">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                    <polyline points="22 4 12 14.01 9 11.01" />
+                  </svg>
+                  <div>
+                    <p className="text-[13px] font-sans font-medium text-charcoal mb-1">
+                      Delivery to {deliveryInfo.city} available.
+                    </p>
+                    <p className="text-[12px] font-sans text-charcoal/70">
+                      Expect delivery in <span className="font-semibold text-charcoal">{deliveryInfo.days} - {deliveryInfo.days + 2} days</span>. Pay on delivery might be available.
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Trust */}
