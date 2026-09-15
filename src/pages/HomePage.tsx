@@ -104,13 +104,44 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
       </section>
 
 
+      
+      {/* ── SOCIAL REELS SLIDER ── */}
+      <section className="py-16 md:py-24 bg-brown border-b border-sand overflow-hidden">
+        <Reveal>
+        <div className="w-full">
+          <div className="px-6 mb-10 text-center">
+             <p className="text-[10px] tracking-[0.3em] text-gold font-sans font-semibold mb-3">EXPERIENCE THE CRAFT</p>
+             <h2 className="font-display font-black text-ivory" style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", letterSpacing: "-0.02em" }}>
+               @paakpehnawa
+             </h2>
+          </div>
+          <div className="flex overflow-x-auto gap-4 px-6 pb-8 snap-x snap-mandatory scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+            {["DGrVefOtvXn","DdORVQrgf35","DdL4UCGgiIR","DdG714nAn8E","DdGxfzVpBT8","DdEKJueA_wk","DdBfbD-AmBo","Dc_IIo7AMaP","Dc71u2wtNU7","DcnQmgjpmju"].map(id => (
+               <div key={id} className="snap-center shrink-0 w-[280px] sm:w-[320px] bg-charcoal/20 flex items-center justify-center rounded-sm overflow-hidden" style={{ height: "540px" }}>
+                 <iframe 
+                   src={`https://www.instagram.com/reel/${id}/embed/?autoplay=0`}
+                   width="320" 
+                   height="540" 
+                   frameBorder="0" 
+                   scrolling="no" 
+                   allowTransparency={true}
+                   loading="lazy"
+                   className="w-full h-full pointer-events-auto"
+                 ></iframe>
+               </div>
+            ))}
+          </div>
+        </div>
+        </Reveal>
+      </section>
+
       {/* ── WHAT'S YOUR <span className="font-signature font-normal text-gold" style={{ fontSize: "1.5em", marginLeft: "4px" }}>Signature</span>? (CHARCOAL) ── */}
       <section className="py-24 md:py-32 bg-brown">
         <Reveal>
         <div className="max-w-[1400px] mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="font-display font-black text-ivory mb-4" style={{ fontSize: "clamp(2rem, 4vw, 3rem)", letterSpacing: "-0.02em" }}>
-              WHAT'S YOUR SIGNATURE?
+              WHAT'S YOUR <span className="font-signature font-normal text-gold" style={{ fontSize: "1.5em", marginLeft: "4px" }}>Signature</span>?
             </h2>
             <p className="text-ivory/60 font-sans">Find the look that defines you.</p>
           </div>
@@ -344,31 +375,7 @@ export default function HomePage({ navigate, wishlist, onWishlist, onAddToCart }
         </Reveal>
       </section>
 
-      {/* ── INSTAGRAM (IVORY) ── */}
-      <section className="py-24 bg-ivory">
-        <Reveal>
-        <div className="max-w-[1400px] mx-auto px-6 text-center">
-          <p className="text-[10px] tracking-[0.3em] text-gold font-sans font-semibold mb-3">FOLLOW THE LEGACY</p>
-          <h2 className="font-display font-black text-charcoal mb-12" style={{ fontSize: "clamp(1.5rem, 3vw, 2.5rem)", letterSpacing: "-0.02em" }}>
-            @paakpehnawa
-          </h2>
-          <div className="grid grid-cols-3 md:grid-cols-6 gap-2">
-            {INSTA_IMAGES.map((src, i) => (
-              <div key={i} className="group relative overflow-hidden bg-sand" style={{ aspectRatio: "1/1" }}>
-                <img src={src} alt="Instagram" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <div className="absolute inset-0 bg-brown/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
-                    <rect x="2" y="2" width="20" height="20" rx="5" />
-                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                  </svg>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        </Reveal>
-      </section>
+      
     </main>
   )
 }
